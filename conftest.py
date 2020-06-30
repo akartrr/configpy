@@ -18,16 +18,7 @@ def browser(request):
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        if language == "es":
-            options.add_experimental_option('prefs', {'intl.accept_languages': 'es'})
-        elif language == "fr":
-            options.add_experimental_option('prefs', {'intl.accept_languages': 'fr'})
-        elif language == "ru":
-            options.add_experimental_option('prefs', {'intl.accept_languages': 'ru'})
-        elif language == "en":
-            options.add_experimental_option('prefs', {'intl.accept_languages': 'en'})
-        else:
-            raise pytest.UsageError("--language should be in: en, es, fr, ru")
+        options.add_experimental_option('prefs', {'intl.accept_languages': language})
         browser = webdriver.Chrome(options=options)
 
     elif browser_name == "firefox":
